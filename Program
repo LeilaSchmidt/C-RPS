@@ -1,0 +1,166 @@
+namespace RockPaperScissors
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int UserPoints = 0;
+            int CompPoints = 0;
+
+            Console.WriteLine("Welcome to Rock, Paper, Scissors! First Player to reach 6 points wins :)");
+            Console.WriteLine("Would you like to play ?");
+            string UserAnswer = Console.ReadLine();
+            string UserChoice;
+
+            //does the user want to play?
+            if (UserAnswer == "no" || UserAnswer == "n" || UserAnswer == "No" || UserAnswer == "N")
+            {
+                return;
+            }
+            else if (UserAnswer == "yes" || UserAnswer == "y" || UserAnswer == "Yes" || UserAnswer == "Y")
+            {
+                Console.WriteLine("alright, let's play!");
+            } 
+            else
+            {
+                Console.WriteLine("Invalid Input, your answer must be either yes or no. The program will exit now, restart it to play again.");
+                return;
+            }
+
+            //While the score of either user is less than five, loop the game
+            while (UserPoints < 5 || CompPoints < 5)
+            {
+                //Computer Input
+                string[] choices = {"Rock", "Paper", "Scissors"};
+                Random random = new Random();
+                int ComputerIndex = random.Next(0, 3);
+                string ComputerChoice = choices[ComputerIndex];
+
+            Console.WriteLine("Do you choose Rock, Paper, or Scissors?");
+            UserChoice = Console.ReadLine();
+
+            //Tie
+            if (UserChoice == ComputerChoice)
+            {
+                Console.WriteLine("You and the computer both chose the same item. You tied!");
+                UserPoints++;
+                CompPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            } 
+
+            //User chooses Rock
+            else if (UserChoice == "Rock" && ComputerChoice == "Paper") 
+            {
+                Console.WriteLine("You chose Rock and the Computer chose Paper. The computer wins this round.");
+                CompPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            } 
+            else if (UserChoice == "Rock" && ComputerChoice == "Scissors") 
+            {
+                Console.WriteLine("You chose Rock and the Computer chose Scissors. You win this round.");
+                UserPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            } 
+
+            //User chooses Paper 
+            else if (UserChoice == "Paper" && ComputerChoice == "Rock") 
+            {
+                Console.WriteLine("You chose Paper and the Computer chose Rock. You win this round.");
+                UserPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            }
+            else if (UserChoice == "Paper" && ComputerChoice == "Scissors")
+            {
+                Console.WriteLine("You chose Paper and the Computer chose Scissors. The computer wins this round.");
+                CompPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            }
+
+            //User chooses Scissors
+            else if (UserChoice == "Scissors" && ComputerChoice == "Rock")
+            {
+                Console.WriteLine("You chose Scissors and the Computer chose Rock. The computer wins this round.");
+                CompPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            }
+            else if (UserChoice == "Scissors" && ComputerChoice == "Paper")
+            {
+                Console.WriteLine("You chose Scissors and the Computer chose Paper. You win this round.");
+                UserPoints++;
+                Console.WriteLine("User Score: " + UserPoints);
+                Console.WriteLine("Computer Score: " + CompPoints);
+                Console.WriteLine();
+            }
+            else
+            {
+                    Console.WriteLine("Invalid Input, your must input either Rock, Paper, or Scissors");
+                    Console.WriteLine();
+            }
+            }
+        }
+    }
+}
+
+/* Planning 
+
+first you enter the game. Ask the user if they want to play 
+- yes - continue
+- no - say goodbye and close console after a timer of 3 seconds 
+
+create an array with the three items
+
+
+start the game:
+-ask the user: Rock, Paper or Scissors 
+- store user input in a var
+
+computer choice:
+- math.random; choose a number between 0 & 2
+
+
+for the computer choosing 
+- write an array
+- use a Math.random function to choose a number between 0 & 2 
+- then use which ever answer is at the array index as the computer's choice
+
+
+for the if statements:
+When the ui && ci are the same put that into one if/switch statement
+then check
+- ui = rock & ci = scissors -- ui wins
+- ui = rock & ci = paper -- ui loses
+
+- ui = paper & ci = rock -- ui wins
+- ui = paper & ci = scissors - ui loses 
+
+- ui = scissors & ci = paper - ui wins 
+- ui = scissors & ci = rock - ui loses 
+
+
+score incrementation:
+user wins: 
+UserScore++;
+computer wins: 
+ComputerScore++;
+
+
+error handling 
+- upper case 
+- lower case 
+- only the first letter of the answer
+- numbers /non-relevant characters 
+
+
+*/
